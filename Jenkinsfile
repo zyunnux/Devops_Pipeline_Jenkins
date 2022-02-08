@@ -12,28 +12,28 @@ pipeline {
     stage('Build') {
         steps {
             echo "Building the checkout project!";
-            sh 'Build.sh'
+            sh './Build.sh'
         }
     }
 
     stage('Unit-Test') {
         steps {
             echo "Running JUnit Tests";
-            sh 'Unit.sh'
+            sh './Unit.sh'
         }
     }
 
     stage('Quality-Gate') {
         steps {
             echo "Verifying Quality Gates";
-            sh 'Quality.sh'
+            sh './Quality.sh'
         }
     }
 
     stage('Deploy') {
         steps {
             echo "Deploying to Stage Environment for more tests!";
-            sh 'Build.sh'
+            sh './Build.sh'
         }
     }
     }
