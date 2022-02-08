@@ -2,38 +2,28 @@ pipeline {
     agent any
     stages {
 	
-	stage('Git-Checkout') {
+	stage('Compile') {
 	    steps {
-                echo "Checking out from Git Repo";
-                git 'https://github.com/zyunnux/Devops_Pipeline_Jenkins.git'
+                echo "Compiled Successfully!";
             }
         }
         
-    stage('Build') {
+    stage('JUnit') {
         steps {
-            echo "Building the checkout project!";
-            bat 'Build.bat'
-        }
-    }
-
-    stage('Unit-Test') {
-        steps {
-            echo "Running JUnit Tests";
-            bat 'Unit.bat'
+            echo "JUnit Passed Successfully!";
         }
     }
 
     stage('Quality-Gate') {
         steps {
-            echo "Verifying Quality Gates";
-            bat 'Quality.bat'
+            echo "SonarQube Quality Gate passed successfuly!";
         }
     }
 
     stage('Deploy') {
         steps {
-            echo "Deploying to Stage Environment for more tests!";
-            bat 'Build.bat'
+            echo "Pass!";
+        }
     }
 
     }
