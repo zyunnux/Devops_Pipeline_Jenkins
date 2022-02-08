@@ -5,35 +5,35 @@ pipeline {
 	stage('Git-Checkout') {
 	    steps {
                 echo "Checking out from Git Repo";
-                git 'https://github.com/zyunnux/Devops_Pipeline_Jenkins.git'
+                git branch: 'main', url: 'https://github.com/zyunnux/Devops_Pipeline_Jenkins.git'
             }
         }
         
     stage('Build') {
         steps {
             echo "Building the checkout project!";
-            sh 'Build.bat'
+            sh 'Build.sh'
         }
     }
 
     stage('Unit-Test') {
         steps {
             echo "Running JUnit Tests";
-            sh 'Unit.bat'
+            sh 'Unit.sh'
         }
     }
 
     stage('Quality-Gate') {
         steps {
             echo "Verifying Quality Gates";
-            sh 'Quality.bat'
+            sh 'Quality.sh'
         }
     }
 
     stage('Deploy') {
         steps {
             echo "Deploying to Stage Environment for more tests!";
-            bat 'Build.bat'
+            sh 'Build.sh'
         }
     }
     }
