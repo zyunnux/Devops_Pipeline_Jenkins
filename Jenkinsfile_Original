@@ -6,6 +6,7 @@ pipeline {
 	    agent {
                         label "master"
                 }
+                }
         steps {
                 echo 'This stage will be executed first'
                 }
